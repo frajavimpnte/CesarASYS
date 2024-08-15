@@ -9,6 +9,7 @@
  */
 package intro.realgraph;
 
+import java.awt.BasicStroke;
 import tools.Coordinate;
 
 import java.awt.Color;
@@ -42,10 +43,16 @@ public class RealFunctionDraw extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        BackGround = new javax.swing.JPanel();
         pnlDraw = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(35, 33, 54));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        BackGround.setBackground(new java.awt.Color(35, 33, 54));
+        getContentPane().add(BackGround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 470));
 
         pnlDraw.setBackground(new java.awt.Color(14, 16, 68));
         pnlDraw.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -54,23 +61,30 @@ public class RealFunctionDraw extends javax.swing.JFrame {
             }
         });
         pnlDraw.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(pnlDraw, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 300, 300));
+        getContentPane().add(pnlDraw, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 300, 300));
 
-        setBounds(0, 0, 640, 480);
+        setBounds(0, 0, 643, 479);
     }// </editor-fold>//GEN-END:initComponents
 
     private void drawAxis() {
         Graphics2D g = (Graphics2D) pnlDraw.getGraphics();
       
         
-        g.setColor(Color.white);
-        g.fillRect(0,0, 640, 480);
+       
+        g.setColor(Color.DARK_GRAY);
+        g.fillRect(0,0, 
+                (int)coordinate.getXSCREEN(),
+                (int)coordinate.getYSCREEN());
+        g.setColor(Color.WHITE);
+        g.drawRect(0, 0,
+                (int)coordinate.getXSCREEN()-1,
+                (int)coordinate.getYSCREEN()-1);
         
-        g.setColor(Color.black);
+        
         //g.drawRect(0,0, 300, 300);
         
         // (XMIN,0)  (XMAX, 0)
-        
+        g.setColor(Color.WHITE);
         g.drawLine(
                 coordinate.toScreenX(coordinate.getXMIN()),
                 coordinate.toScreenY(0.1f),
@@ -114,7 +128,9 @@ public class RealFunctionDraw extends javax.swing.JFrame {
         
         // draw
         Graphics2D g = (Graphics2D) pnlDraw.getGraphics();
-        g.setColor(Color.black);
+        //g.setColor(Color.black);
+        g.setColor(new Color(255, 103, 140));
+        g.setStroke(new BasicStroke(3.0f)); 
         for (int i = 0; i < nPoints-1; i++) {
             g.drawLine(
                 coordinate.toScreenX(xr[i]),
@@ -127,7 +143,7 @@ public class RealFunctionDraw extends javax.swing.JFrame {
     private void pnlDrawMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDrawMouseClicked
         // TODO add your handling code here:
         drawAxis();
-        drawFunction(10);
+        drawFunction(100);
 
     }//GEN-LAST:event_pnlDrawMouseClicked
 
@@ -173,6 +189,7 @@ public class RealFunctionDraw extends javax.swing.JFrame {
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel BackGround;
     private javax.swing.JPanel pnlDraw;
     // End of variables declaration//GEN-END:variables
 }

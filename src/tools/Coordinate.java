@@ -58,6 +58,14 @@ public class Coordinate {
     public void setYSCREEN(float YSCREEN) {
         this.YSCREEN = YSCREEN;
     }
+
+    public float getXSCREEN() {
+        return XSCREEN;
+    }
+
+    public float getYSCREEN() {
+        return YSCREEN;
+    }
     
     
     
